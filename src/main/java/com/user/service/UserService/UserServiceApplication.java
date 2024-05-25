@@ -11,4 +11,5 @@ public class UserServiceApplication {
 		System.out.println("User Service Started..............");
 	}
 
+
 }
