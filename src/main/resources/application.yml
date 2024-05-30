@@ -14,13 +14,14 @@ spring:
     properties:
       hibernate:
 
+  application:
+    name: USER-SERVICE
 
-
-
-#        dialect: org.hibernate.dialect.MySQLDialect
-
-# Logging configuration
-#logging:
-#  level:
-#    root: INFO
-#    org.springframework.web: DEBUG
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
