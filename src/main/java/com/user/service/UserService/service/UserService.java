@@ -10,4 +10,8 @@ public interface UserService {
     User getSingleUser(String userId);
 
     List<User> getAllUsers();
+
+    User getSingleUserWithRatingAndHotel(String userId);
+
+    User getSingleUserWithRating(String userId);
 }
