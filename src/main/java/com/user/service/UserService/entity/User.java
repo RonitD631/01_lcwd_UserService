@@ -2,6 +2,8 @@ package com.user.service.UserService.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,8 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "micro_users")
+@Getter
+@Setter
 public class User {
 
      @Id
@@ -25,6 +29,6 @@ public class User {
      private String about;
 
      @Transient
-     private List<Rating> ratings = new ArrayList<>(); 
+     private List<Rating> ratings = new ArrayList<>();
 
 }

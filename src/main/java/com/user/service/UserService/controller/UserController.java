@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -17,18 +18,33 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //CREATE USER API
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user){
         return new ResponseEntity<>(userService.createUser(user) , HttpStatus.CREATED);
     }
 
+    //GET ONLY USER DETAILS BASED UPON ID
     @GetMapping("/{userId}")
     public ResponseEntity<User> getSingleUser(@PathVariable String userId){
         return new ResponseEntity<>(userService.getSingleUser(userId),HttpStatus.OK);
     }
 
+    //GET THE LIST OF ONLY USER DETAILS
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<>(userService.getAllUsers(),HttpStatus.OK);
+    }
+
+    //GET SINGLE USER WITH USER DETAILS AND RATINGS &HOTEL DETAILS ON WHICH THAT THE USER HAS MADE
+    @GetMapping("/userwithratings&hotels/{userId}")
+    public ResponseEntity<User> getSingleUserWithRatingAndHotel(@PathVariable String userId){
+        return new ResponseEntity<>(userService.getSingleUserWithRatingAndHotel(userId),HttpStatus.OK);
+    }
+
+    //GET SINGLE USER WITH USER DETAILS AND RATINGS THE USER HAS MADE
+    @GetMapping("/userwithratings/{userId}")
+    public ResponseEntity<User> getSingleUserWithRating(@PathVariable String userId){
+        return new ResponseEntity<>(userService.getSingleUserWithRating(userId),HttpStatus.OK);
     }
 }
